@@ -13,6 +13,7 @@
         {{-- Ini adalah sintaks Blade untuk melakukan perulangan --}}
         @foreach ($provinsis as $provinsi)
             {{-- Menampilkan nama provinsi --}}
+            
             <li>{{ $provinsi->nama }}</li>
         @endforeach
     </ul>
