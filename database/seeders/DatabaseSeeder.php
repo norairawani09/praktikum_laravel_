@@ -11,12 +11,17 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // Panggil seeder lain secara berurutan
+        // Hapus atau beri komentar pada seeder lama jika tidak diperlukan untuk tugas ini
+        // $this->call([
+        //     ProvinsiSeeder::class,
+        //     KotaSeeder::class,
+        //     KecamatanSeeder::class,
+        //     KelurahanSeeder::class,
+        // ]);
+
+        // Panggil seeder untuk tugas yang sekarang
         $this->call([
-            ProvinsiSeeder::class,
-            KotaSeeder::class,
-            KecamatanSeeder::class,
-            KelurahanSeeder::class,
+            NilaiSeeder::class,
         ]);
     }
 }
