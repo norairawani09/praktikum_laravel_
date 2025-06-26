@@ -11,7 +11,9 @@ return Application::configure(basePath: dirname(__DIR__))
         health: '/up',
     )
     ->withMiddleware(function (Middleware $middleware) {
-        //
+        $middleware->alias([
+            'check.age' => \App\Http\Middleware\CheckUserAge::class, // <-- TAMBAHKAN BARIS INI
+        ]);
     })
     ->withExceptions(function (Exceptions $exceptions) {
         //

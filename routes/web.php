@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\GreetingsController;
 use App\Http\Controllers\AlamatController;
 use App\Http\Controllers\NilaiController;
+use Illuminate\Support\Facades\Auth;
 
 
 Route::get('/', function () {
@@ -18,6 +19,9 @@ Route::get('/pendidikan', [PortfolioController::class, 'pendidikan']);
 Route::get('/keahlian', [PortfolioController::class, 'keahlian']);
 Route::get('/alamat', [AlamatController::class, 'index']);
 Route::get('/nilai/{mahasiswaId}', [NilaiController::class, 'showNilaiMahasiswa'])->name('tampilnilai');
+Route::get('/dashboard-khusus', function () {
+    return view('dashboard-khusus');
+})->middleware(['auth', 'check.age'])->name('dashboard.khusus');
 
 
 Auth::routes();
