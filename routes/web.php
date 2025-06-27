@@ -5,6 +5,7 @@ use App\Http\Controllers\GreetingsController;
 use App\Http\Controllers\AlamatController;
 use App\Http\Controllers\NilaiController;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\FileUploadController;
 
 
 Route::get('/', function () {
@@ -22,6 +23,15 @@ Route::get('/nilai/{mahasiswaId}', [NilaiController::class, 'showNilaiMahasiswa'
 Route::get('/dashboard-khusus', function () {
     return view('dashboard-khusus');
 })->middleware(['auth', 'check.age'])->name('dashboard.khusus');
+// Route untuk menampilkan form upload dan daftar file
+Route::get('/upload', [FileUploadController::class, 'index'])->name('upload.index');
+
+// Route untuk memproses upload file
+Route::post('/upload', [FileUploadController::class, 'store'])->name('upload.store');
+
+// Route untuk menghapus file
+Route::delete('/upload/{file}', [FileUploadController::class, 'destroy'])->name('upload.destroy');
+
 
 
 Auth::routes();
